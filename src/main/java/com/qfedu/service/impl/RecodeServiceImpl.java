@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 public class RecodeServiceImpl implements RecodeService {
     @Autowired
     private RecodeDao recodeDao;
+
     @Override
     public ResultVo save(Recode recode) {
         return ResultUtil.exec(recodeDao.save(recode)>0,"新增记录",null);
@@ -37,5 +38,11 @@ public class RecodeServiceImpl implements RecodeService {
     @Override
     public PageVo<Recode> queryPage(int page, int size) {
         return ResultUtil.exec(page,size,recodeDao.queryCount(),recodeDao.queryByPage((page-1)*size,size));
+    }
+
+    @Override
+    public PageVo<Recode> queryPage2(String msg, int page, int size) {
+        msg='%'+msg+'%';
+        return ResultUtil.exec(page,size,recodeDao.queryCount(),recodeDao.queryByPage1(msg,(page-1)*size,size));
     }
 }

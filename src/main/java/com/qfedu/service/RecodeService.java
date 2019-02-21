@@ -14,6 +14,7 @@ public interface RecodeService {
     ResultVo queryById(int id);
     ResultVo queryLike(String msg);
     PageVo<Recode> queryPage(int page,int size);
+    PageVo<Recode> queryPage2(String msg,int page,int size);
 
 
 }

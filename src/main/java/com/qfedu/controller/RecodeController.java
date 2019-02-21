@@ -20,6 +20,7 @@ public class RecodeController {
 
     @PostMapping("recodesave.do")
     public ResultVo save( Recode recode){
+
         return recodeService.save(recode);
     }
     @GetMapping("recodedetail.do")
@@ -31,8 +32,11 @@ public class RecodeController {
         return recodeService.queryLike(msg);
     }
     @GetMapping("recodepage.do")
-    public PageVo<Recode> page(int page, int size){
-        return recodeService.queryPage(page,size);
+    public PageVo<Recode> page(int page, int limit){
+        return recodeService.queryPage(page,limit);
     }
-
+    @GetMapping("recodepagelike.do")
+    public PageVo<Recode> page2(@RequestParam(defaultValue = "") String msg,int page, int limit){
+        return recodeService.queryPage2(msg,page,limit);
+    }
 }

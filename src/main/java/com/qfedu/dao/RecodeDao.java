@@ -21,9 +21,12 @@ public interface RecodeDao {
     @ResultType(Recode.class)
     Recode queryById(int id);
     //查询分页
-    @Select("select id,name,classname,title,res,createtime from t_recode order by id desc limit #{index},#{count}")
+    @Select("select id,name,classname,title,res,createtime from t_recode  order by id desc limit #{index},#{count}")
     @ResultType(Recode.class)
     List<Recode> queryByPage(@Param("index") int index, @Param("count") int count);
+    @Select("select id,name,classname,title,res,createtime from t_recode where  name like #{msg} or title like #{msg} order by id desc limit #{index},#{count}")
+    @ResultType(Recode.class)
+    List<Recode> queryByPage1(@Param("msg") String msg,@Param("index") int index, @Param("count") int count);
     //查询数量
     @Select("select Count(*) from t_recode")
     @ResultType(long.class)

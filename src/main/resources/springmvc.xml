@@ -11,6 +11,15 @@
     <!--3、放行静态资源-->
     <mvc:default-servlet-handler></mvc:default-servlet-handler>
 
+    <!--4、配置文件上传解析器-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!--文件大小-->
+        <property name="maxUploadSize" value="30000000"></property>
+        <!--内存 每一次读取的大小-->
+        <property name="maxInMemorySize" value="10240"></property>
+        <!--名称的编码格式-->
+        <property name="defaultEncoding" value="UTF-8"></property>
+    </bean>
 
 
 </beans>

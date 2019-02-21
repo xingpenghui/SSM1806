@@ -6,7 +6,7 @@
 
     <!--Maven的GAV坐标 -->
     <groupId>com.qfedu</groupId>
-    <artifactId>SSM1806</artifactId>
+    <artifactId>SSM1807</artifactId>
     <version>1.0</version>
 
     <packaging>war</packaging>
@@ -21,6 +21,7 @@
         <jackson.version>2.9.8</jackson.version>
         <aspectjweaver.version>1.9.2</aspectjweaver.version>
         <jdk.version>1.8</jdk.version>
+        <fileupload.version>1.4</fileupload.version>
     </properties>
 
     <!--2、版本号限定-->
@@ -43,6 +44,13 @@
                 <artifactId>aspectjweaver</artifactId>
                 <version>${aspectjweaver.version}</version>
             </dependency>
+            <!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
+            <dependency>
+                <groupId>commons-fileupload</groupId>
+                <artifactId>commons-fileupload</artifactId>
+                <version>${fileupload.version}</version>
+            </dependency>
+
 
             <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
             <dependency>
@@ -94,6 +102,13 @@
             <artifactId>druid</artifactId>
 
         </dependency>
+        <!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+
+        </dependency>
+
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>

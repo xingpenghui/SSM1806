@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LayUI基础展示</title>
+    <link rel="stylesheet" href="layui/css/layui.css">
+    <script type="application/javascript" src="layui/layui.js"></script>
+</head>
+<body>
+<div class="layui-container">
+    常规布局（以中型屏幕桌面为例）：
+    <div class="layui-row">
+        <div class="layui-col-lg9 layui-bg-red">
+            你的内容 9/12
+        </div>
+        <div class="layui-col-lg3 layui-bg-orange">
+            你的内容 3/12
+        </div>
+    </div>
+
+    移动设备、平板、桌面端的不同表现：
+    <div class="layui-row">
+        <div class="layui-col-xs6 layui-col-sm6 layui-col-md4 layui-bg-green">
+            移动：6/12 | 平板：6/12 | 桌面：4/12
+        </div>
+        <div class="layui-col-xs6 layui-col-sm6 layui-col-md4 layui-bg-cyan">
+            移动：6/12 | 平板：6/12 | 桌面：4/12
+        </div>
+        <div class="layui-col-xs4 layui-col-sm12 layui-col-md4 layui-bg-blue">
+            移动：4/12 | 平板：12/12 | 桌面：4/12
+        </div>
+        <div class="layui-col-xs4 layui-col-sm7 layui-col-md8">
+            移动：4/12 | 平板：7/12 | 桌面：8/12
+        </div>
+        <div class="layui-col-xs4 layui-col-sm5 layui-col-md4">
+            移动：4/12 | 平板：5/12 | 桌面：4/12
+        </div>
+
+    </div>
+    <div class="layui-row">
+        <div class="layui-col-md6 layui-bg-blue">
+          一半
+        </div>
+        <div class="layui-col-md6 layui-bg-cyan">
+            一半
+        </div>
+        <div class="layui-col-md6 layui-col-md-offset1 layui-bg-blue">
+            1111
+        </div>
+
+        <div class="layui-col-md6 layui-col-md-offset1 layui-bg-cyan">
+            2222
+            <i class="layui-icon">&#xe60c;</i>
+        </div>
+
+    </div>
+    <div class="layui-row">
+        <div class="layui-col-lg12" style="height: 100px;font-size: 30px">
+            我是图标：<i class="layui-icon layui-icon-rate-half"></i>
+            <button value="点我">点我<i style="font-size: 30px;" class="layui-icon layui-icon-console"></i></button>
+            <button 	class="layui-btn layui-btn-normal">百搭</button>
+            <button 	class="layui-btn layui-btn-normal layui-btn-xs">迷你</button>
+
+            <button class="layui-btn layui-btn-fluid">流体按钮（最大化适应）</button>
+            <button class="layui-btn layui-btn-radius layui-btn-warm">圆角</button>
+
+            <button class="layui-btn">
+                <i class="layui-icon layui-icon-website"></i> 添加
+            </button>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

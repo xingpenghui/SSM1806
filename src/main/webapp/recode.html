@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学员面试题记录</title>
+<!--1、引入对应的样式和js-->
+    <link rel="stylesheet" href="layui/css/layui.css">
+    <script type="application/javascript" src="layui/layui.js"></script>
+    <script type="application/javascript" src="js/jquery-3.3.1.js"></script>
+    <style type="text/css">
+        .caller-seach{
+            position: relative;
+            padding-bottom: 40px;
+        }
+        .layadmin-caller .caller-seach .caller-icon{
+            font-size: 18px;
+            position: absolute;
+            top: 9px;
+        }
+        .layadmin-caller .caller-seach-icon {
+            left: 6px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <!--1、搜索框-->
+    <div class="layui-row">
+        <div class="layui-col-lg12" style="text-align: center;margin-top: 10px;padding: 10px">
+
+                <p style="font-size: 20px;" >
+                    <span style="border: 1px solid black;padding:6px;height: 38px;line-height: 38px">
+                         <label><i class="layui-icon layui-icon-search"></i></label>
+                        <input id="smsg" type="text" name="msg" placeholder="请输入名称或标题……" style="border: none;width: 400px;margin-left: 4px">
+                    </span>
+                    <button type="button" onclick="searchMsg()" class="layui-btn" ><i class="layui-icon layui-icon-search"></i> 搜索</button>
+                </p>
+
+        </div>
+
+    </div>
+    <div class="layui-row">
+        <table id="dvdata" lay-filter="test"></table>
+        <script type="text/html" id="toolbarDemo">
+            <div class="layui-btn-container">
+                <button class="layui-btn layui-btn-sm" style="width: 100px" lay-event="add">添加</button>
+            </div>
+        </script>
+        <script type="text/html" id="barDemo">
+            <a class="layui-btn layui-btn-xs" lay-event="detail">查看</a>
+            <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+            <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+        </script>
+    </div>
+</div>
+<script type="application/javascript">
+    var layer,form,table;
+    var tableIns;
+    layui.use(['table','layer','form'], function() {
+        table = layui.table;
+        layer = layui.layer;
+        form = layui.form;
+        //监听提交
+        form.on('submit(formDemo)', function(data){
+            // layer.msg($("#fm1").serialize());
+            $.ajax({
+                url:"recodesave.do",
+                method:"POST",
+                data:$("#fm1").serialize(),
+                success:function (obj) {
+                    if(obj.code==1){
+                        layer.msg("新增成功");
+                    }else{
+                        layer.msg("新增失败："+obj.code);
+                    }
+                }
+            });
+            return false;
+        });
+        //第一个实例
+        tableIns=table.render({
+            elem: '#dvdata'
+            , height: 'full-20'
+            ,toolbar: '#toolbarDemo'
+            , url: 'recodepagelike.do' //数据接口
+            , page: true //开启分页
+            , cols: [[ //表头
+                {field: 'id', title: '序号',  sort: true, fixed: 'left'}
+                , {field: 'classname', title: '班级'}
+                , {field: 'name', title: '姓名',  sort: true}
+                , {field: 'title', title: '面试题目'}
+                , {field: 'res', title: '掌握程度'}
+                , {field: 'createtime', title: '添加时间', sort: true}
+                ,{fixed: 'right',title:'操作', width:250, align:'center', toolbar: '#barDemo'} //这里的toolbar值是模板元素的选择器
+            ]]
+        });
+        //监听头部工具栏事件
+        table.on('toolbar(test)', function(obj){
+            var checkStatus = table.checkStatus(obj.config.id);
+            switch(obj.event){
+                case 'add':
+                    addShow();
+                    break;
+            };
+        });
+        //监听列工具条事件
+        table.on('tool(test)', function(obj){ //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
+            var data = obj.data; //获得当前行数据
+            var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
+            var tr = obj.tr; //获得当前行 tr 的DOM对象
+            console.log(data);
+            if(layEvent === 'detail'){ //查看
+                //do somehing
+                layer.msg(data);
+            } else if(layEvent === 'del'){ //删除
+                layer.confirm('真的删除行么', function(index){
+                    obj.del(); //删除对应行（tr）的DOM结构，并更新缓存
+                    //Ajax请求接口
+                    layer.close(index);
+                    //向服务端发送删除指令
+                });
+            } else if(layEvent === 'edit'){ //编辑
+                //do something
+                //同步更新缓存对应的值
+                obj.update({
+                    nam: '修改'
+                    ,title: '修改了吗'
+                });
+            }
+        });
+    });
+    function addShow() {
+        layer.open({
+            type: 1,
+            content:$('#dvfm'),
+            area: ['530px', '350px'],
+            title:'新增记录'
+        });
+    }
+    //搜索框
+    function searchMsg() {
+        tableIns.reload({
+            url: 'recodepagelike.do'
+            , where: {msg:$("#smsg").val()}
+            ,page: {
+                curr: 1 //重新从第 1 页开始
+            }//设定异步数据接口的额外参数
+        });
+    }
+</script>
+</body>
+</html>
+<div id="dvfm" class="layui-container" style="width: 530px;display: none">
+    <form id="fm1" class="layui-form " action="#" style="margin-top: 20px">
+        <div class="layui-form-item">
+            <label class="layui-form-label">姓名：</label>
+            <div class="layui-input-block">
+                <input type="text" name="name" lay-verify="username" placeholder="请输入姓名" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">班级：</label>
+            <div class="layui-input-block">
+                <input type="text" name="classname"  placeholder="请输入班级" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">标题：</label>
+            <div class="layui-input-block">
+                <input type="text" name="title"  placeholder="请输入题目" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">结果：</label>
+            <div class="layui-input-block">
+                <input type="checkbox" name="res" value="精通" title="精通" checked>
+                <input type="checkbox" name="res" value="熟练" title="熟练" >
+                <input type="checkbox" name="res" value="了解" title="了解">
+                <input type="checkbox" name="res" value="未知" title="未知">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit lay-filter="formDemo">新增记录</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LayUI常用组件</title>
+    <link rel="stylesheet" href="layui/css/layui.css">
+    <script type="application/javascript" src="layui/layui.js"></script>
+    <script type="application/javascript" src="js/jquery-3.3.1.js"></script>
+
+</head>
+<body>
+<div class="container">
+    <!--1、弹出层-->
+    <div class="layui-row">
+        <div class="layui-col-lg12" style="text-align: center">
+            <button class="layui-btn layui-bg-orange" onclick="add()">点击新增</button>
+        </div>
+    </div>
+    <!--2、分页-->
+    <div id="test1"></div>
+    <!--3、动态数据表格-->
+    <table id="dvdata" lay-filter="test"></table>
+    <div class="layui-row">
+        <div class="layui-col-lg12">
+            <!--4、表单校验-->
+            <form class="layui-form" id="fm2"> <!-- 提示：如果你不想用form，你可以换成div等任何一个普通元素 -->
+                <div class="layui-form-item">
+                    <label class="layui-form-label">用户名</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="username" lay-verify="phone" placeholder="请输入" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button class="layui-btn" lay-submit lay-filter="*">立即提交</button>
+                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!--5、上传-->
+    <div>
+
+        <button type="button" class="layui-btn" id="t2">
+            <i class="layui-icon">&#xe67c;</i>上传图片
+        </button>
+    </div>
+<!--6、颜色选择器-->
+    <div id="t3"></div>
+<!--7、评分组件-->
+    <div id="t4"></div>
+</div>
+
+<script type="application/javascript">
+    var layer;
+    layui.use(['layer','form','laydate','laypage','table','upload','colorpicker','rate'], function(){
+        layer = layui.layer;
+        var form = layui.form;
+        var laydate=layui.laydate;
+        var laypage = layui.laypage;
+        var table = layui.table;
+        var upload = layui.upload;
+        var colorpicker = layui.colorpicker;
+        var rate=layui.rate;
+        //渲染
+        var ins1 = rate.render({
+            elem: '#t4'  //绑定元素
+        });
+        //渲染
+        colorpicker.render({
+            elem: '#t3'  //绑定元素
+        });
+        //执行实例
+        var uploadInst = upload.render({
+            elem: '#t2' //绑定元素
+            ,url: 'fileupsave.do' //上传接口
+            ,field:'fileimg'
+            ,done: function(res){
+                //上传完毕回调
+                alert(res.msg);
+
+            }
+            ,error: function(){
+                //请求异常回调
+            }
+        });
+        //第一个实例
+        table.render({
+            elem: '#dvdata'
+            ,height: 500
+            ,url: 'https://www.layui.com/demo/table/user/?page=1&limit=30' //数据接口
+            ,page: true //开启分页
+            ,cols: [[ //表头
+                {field: 'id', title: 'ID', width:80, sort: true, fixed: 'left'}
+                ,{field: 'username', title: '用户名', width:80}
+                ,{field: 'sex', title: '性别', width:80, sort: true}
+                ,{field: 'city', title: '城市', width:80}
+                ,{field: 'sign', title: '签名', width: 177}
+                ,{field: 'experience', title: '积分', width: 80, sort: true}
+                ,{field: 'score', title: '评分', width: 80, sort: true}
+                ,{field: 'classify', title: '职业', width: 80}
+                ,{field: 'wealth', title: '财富', width: 135, sort: true}
+            ]]
+        });
+
+
+        //执行一个laypage实例
+        laypage.render({
+            elem: 'test1' //注意，这里的 test1 是 ID，不用加 # 号
+            ,count: 5000 //数据总数，从服务端得到
+            ,limit:20,
+            limits:[10,20,30,50,100],
+            curr:1,
+            groups:10,
+            jump: function(obj, first){
+            //obj包含了当前分页的所有参数，比如：
+            console.log(obj.curr); //得到当前页，以便向服务端请求对应页的数据。
+            console.log(obj.limit); //得到每页显示的条数
+            layer.msg('点击了第：'+obj.curr+'页，每页：'+obj.limit);
+            //首次不执行
+            if(!first){
+                //do something
+            }
+        }
+
+        });
+        //执行一个laydate实例
+        laydate.render({
+            elem: '#date2' //指定元素
+        });
+
+        //监听提交
+        form.on('submit(formDemo)', function(data){
+            layer.msg(JSON.stringify(data.field));
+            return false;
+        });
+        form.verify({
+            username: function (value, item) { //value：表单的值、item：表单的DOM对象
+                alert(value);
+                if (!new RegExp("^[a-zA-Z0-9_\u4e00-\u9fa5\\s·]+$").test(value)) {
+                    return '用户名不能有特殊字符';
+                }
+                if (/(^\_)|(\__)|(\_+$)/.test(value)) {
+                    return '用户名首尾不能出现下划线\'_\'';
+                }
+                if (/^\d+\d+\d$/.test(value)) {
+                    return '用户名不能全为数字';
+                }
+            }
+        });
+
+    });
+    //新增弹出层
+    function add() {
+      //  $("#fmadd").show();
+        var ap=layer.open({
+            type: 1,
+            content: $("#fmadd") //这里content是一个普通的String
+            ,area: ['800px', '600px'],
+            skin:'layui-layer-molv',
+            btn: ['新增', '取消']
+            ,yes: function(index, layero){
+            //按钮【按钮一】的回调
+                layer.msg("你新增了数据");
+        },
+        });
+    }
+</script>
+</body>
+</html>
+<div id="fmadd" class="layui-container" style="display: none;margin-top: 10px">
+   <!-- <form class="layui-form layui-form-pane" action="#">
+        <div class="layui-form-item">
+            <label class="layui-form-label">用户名</label>
+            <div class="layui-input-inline">
+                <input type="text" name="username" lay-verify="username" placeholder="请输入标题" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">密码框</label>
+            <div class="layui-input-inline">
+                <input type="password" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+            </div>
+            <div class="layui-form-mid layui-word-aux">辅助文字</div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">选择框</label>
+            <div class="layui-input-block">
+                <select name="city" lay-verify="required">
+                    <option value=""></option>
+                    <option value="0">北京</option>
+                    <option value="1">上海</option>
+                    <option value="2">广州</option>
+                    <option value="3">深圳</option>
+                    <option value="4">杭州</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">复选框</label>
+            <div class="layui-input-block">
+                <input type="checkbox" name="like[write]" title="写作">
+                <input type="checkbox" name="like[read]" title="阅读" checked>
+                <input type="checkbox" name="like[dai]" title="发呆">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">开关</label>
+            <div class="layui-input-block">
+                <input type="checkbox" name="switch" lay-skin="switch">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">日期</label>
+            <div class="layui-input-block">
+                <input type="date" name="date" class="layui-input">
+                <input type="text" name="date2" id="date2" class="layui-input" >
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">单选框</label>
+            <div class="layui-input-block">
+                <input type="radio" name="sex" value="男" title="男">
+                <input type="radio" name="sex" value="女" title="女" checked>
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">文本域</label>
+            <div class="layui-input-block">
+                <textarea name="desc" placeholder="请输入内容" class="layui-textarea"></textarea>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
+    </form>
+-->
+</div>

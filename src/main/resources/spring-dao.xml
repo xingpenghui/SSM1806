@@ -13,7 +13,6 @@
         <property name="url" value="${dburl}"></property>
         <property name="username" value="${dbusername}"></property>
         <property name="password" value="${dbpassword}"></property>
-
     </bean>
 
     <!--3、创建会话创建工厂-->

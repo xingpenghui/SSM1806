@@ -11,6 +11,15 @@ public class PageVo<T> {
     private int page;
     private int size;
     private int totalpage;
+    private int code;
+
+    public int getCode() {
+        return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
+    }
 
     public long getCount() {
         return count;
