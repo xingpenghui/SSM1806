@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>千锋郑州</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script type="application/javascript" src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="layui/css/layui.css">
+    <script type="application/javascript" src="layui/layui.js"></script>
+    <style type="text/css">
+        .ulhx li{
+            float: left;
+            margin-right: 10px;
+            text-align: center;
+            height: 60px;
+            padding-top: 2px;
+        }
+         li span{
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body style="background-color: #F0F3EF">
+<div class="container" style="background-color: #FFFFFF" >
+    <!--1、顶部-->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="row">
+                <div class="col-lg-6" style="float: left">
+                    <ul class="list-unstyled ulhx">
+                        <li>
+                            <div class="dropdown">
+                                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    中国大陆
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                    <li><a href="#">中国香港</a></li>
+                                    <li><a href="#">马来西亚</a></li>
+                                    <li><a href="#">印度</a></li>
+                                    <li role="separator" class="divider">美国</li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <span>
+                                亲，请登录免费注册
+                            </span>
+                        </li>
+                        <li> <span>手机逛千锋</span></li>
+                    </ul>
+                </div>
+                <div class="col-lg-6" style="float: right">
+                    <ul class="list-unstyled ulhx">
+                        <li> <span>我的千锋</span></li>
+                        <li> <span>我的课程</span></li>
+                        <li> <span>课程清单</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--2、Logo和搜索-->
+    <div class="row">
+        <div class="col-lg-2">
+            <img src="images/logo.JPG">
+        </div>
+        <div class="col-lg-8">
+            <div class="input-group" style="margin-top: 20px">
+                <span class="input-group-addon"> <span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
+                <input type="text" class="form-control" placeholder="Search for...">
+                <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">Go!</button>
+                    </span>
+            </div>
+        </div>
+        <div class="col-lg-2">
+            <img src="images/ewm.JPG">
+        </div>
+    </div>
+    <!--3、轮播图-->
+    <div class="row">
+        <div class="col-lg-12">
+                <div class="carousel slide" id="carousel-163691">
+                    <ol class="carousel-indicators">
+                        <li class="active" data-slide-to="0" data-target="#carousel-163691">
+                        </li>
+                        <li data-slide-to="1" data-target="#carousel-163691">
+                        </li>
+                        <li data-slide-to="2" data-target="#carousel-163691">
+                        </li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <img alt="" src="http://img4.imgtn.bdimg.com/it/u=3863710847,2820277857&fm=200&gp=0.jpg" />
+                            <div class="carousel-caption">
+                                <h4>
+                                    棒球
+                                </h4>
+                                <p>
+                                    棒球运动是一种以棒打球为主要特点，集体性、对抗性很强的球类运动项目，在美国、日本尤为盛行。
+                                </p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img alt="" src="http://img4.imgtn.bdimg.com/it/u=3863710847,2820277857&fm=200&gp=0.jpg" />
+                            <div class="carousel-caption">
+                                <h4>
+                                    冲浪
+                                </h4>
+                                <p>
+                                    冲浪是以海浪为动力，利用自身的高超技巧和平衡能力，搏击海浪的一项运动。运动员站立在冲浪板上，或利用腹板、跪板、充气的橡皮垫、划艇、皮艇等驾驭海浪的一项水上运动。
+                                </p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img alt="" src="http://img4.imgtn.bdimg.com/it/u=3863710847,2820277857&fm=200&gp=0.jpg" />
+                            <div class="carousel-caption">
+                                <h4>
+                                    自行车
+                                </h4>
+                                <p>
+                                    以自行车为工具比赛骑行速度的体育运动。1896年第一届奥林匹克运动会上被列为正式比赛项目。环法赛为最著名的世界自行车锦标赛。
+                                </p>
+                            </div>
+                        </div>
+                    </div> <a data-slide="prev" href="#carousel-163691" class="left carousel-control">‹</a> <a data-slide="next" href="#carousel-163691" class="right carousel-control">›</a>
+                </div>
+        </div>
+    </div>
+    <!--4、列表-->
+    <div>
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <img src="http://img4.imgtn.bdimg.com/it/u=3863710847,2820277857&fm=200&gp=0.jpg" width="100%" height="200px"/>
+                    </div>
+                    <div class="col-lg-6">
+                            <p style="color: red">
+                                <span>￥</span>
+                                <span>200.99</span>
+                                <span><span class="badge" style="background-color: red">包邮</span></span>
+                            </p>
+                    </div>
+                    <div class="col-lg-6">
+                        <p style="float: right;margin-right: 10px">
+                            <span>223</span>
+                            <span>人付款</span>
+                        </p>
+                    </div>
+                    <div class="col-lg-12">
+                        <p>
+                            萌乎原创春款女童襦裙改良汉服中式唐装中国风儿童连衣裙公主裙
+                        </p>
+                    </div>
+                    <div class="col-lg-6">
+                        <p>
+                            <span class="glyphicon glyphicon-align-justify"></span>
+                            <span style="color: gray;">徐徐然0</span>
+                        </p>
+                    </div>
+                    <div class="col-lg-6">
+                        <p style="float: right;margin-right: 10px">
+                            <span>河南</span>
+                            <span>郑州</span>
+                        </p>
+                    </div>
+                    <div class="col-lg-6">
+                        <span class="glyphicon glyphicon-fire " style="background-color: red"></span>
+                    </div>
+                    <div class="col-lg-6">
+                        <p style="margin-right: 10px; float: right;">
+                            <span class="glyphicon glyphicon-certificate" style="background-color: red"></span>
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <img src="http://img4.imgtn.bdimg.com/it/u=3863710847,2820277857&fm=200&gp=0.jpg" width="100%" height="200px"/>
+                    </div>
+                    <div class="col-lg-6">
+                        <p style="color: red">
+                            <span>￥</span>
+                            <span>200.99</span>
+                            <span><span class="badge" style="background-color: red">包邮</span></span>
+                        </p>
+                    </div>
+                    <div class="col-lg-6">
+                        <p style="float: right;margin-right: 10px">
+                            <span>223</span>
+                            <span>人付款</span>
+                        </p>
+                    </div>
+                    <div class="col-lg-12">
+                        <p>
+                            萌乎原创春款女童襦裙改良汉服中式唐装中国风儿童连衣裙公主裙
+                        </p>
+                    </div>
+                    <div class="col-lg-6">
+                        <p>
+                            <span class="glyphicon glyphicon-align-justify"></span>
+                            <span style="color: gray;">徐徐然0</span>
+                        </p>
+                    </div>
+                    <div class="col-lg-6">
+                        <p style="float: right;margin-right: 10px">
+                            <span>河南</span>
+                            <span>郑州</span>
+                        </p>
+                    </div>
+                    <div class="col-lg-6">
+                        <span class="glyphicon glyphicon-fire " style="background-color: red"></span>
+                    </div>
+                    <div class="col-lg-6">
+                        <p style="margin-right: 10px; float: right;">
+                            <span class="glyphicon glyphicon-certificate" style="background-color: red"></span>
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <img src="http://img4.imgtn.bdimg.com/it/u=3863710847,2820277857&fm=200&gp=0.jpg" width="100%" height="200px"/>
+                    </div>
+                    <div class="col-lg-6">
+                        <p style="color: red">
+                            <span>￥</span>
+                            <span>200.99</span>
+                            <span><span class="badge" style="background-color: red">包邮</span></span>
+                        </p>
+                    </div>
+                    <div class="col-lg-6">
+                        <p style="float: right;margin-right: 10px">
+                            <span>223</span>
+                            <span>人付款</span>
+                        </p>
+                    </div>
+                    <div class="col-lg-12">
+                        <p>
+                            萌乎原创春款女童襦裙改良汉服中式唐装中国风儿童连衣裙公主裙
+                        </p>
+                    </div>
+                    <div class="col-lg-6">
+                        <p>
+                            <span class="glyphicon glyphicon-align-justify"></span>
+                            <span style="color: gray;">徐徐然0</span>
+                        </p>
+                    </div>
+                    <div class="col-lg-6">
+                        <p style="float: right;margin-right: 10px">
+                            <span>河南</span>
+                            <span>郑州</span>
+                        </p>
+                    </div>
+                    <div class="col-lg-6">
+                        <span class="glyphicon glyphicon-fire " style="background-color: red"></span>
+                    </div>
+                    <div class="col-lg-6">
+                        <p style="margin-right: 10px; float: right;">
+                            <span class="glyphicon glyphicon-certificate" style="background-color: red"></span>
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <img src="http://img4.imgtn.bdimg.com/it/u=3863710847,2820277857&fm=200&gp=0.jpg" width="100%" height="200px"/>
+                    </div>
+                    <div class="col-lg-6">
+                        <p style="color: red">
+                            <span>￥</span>
+                            <span>200.99</span>
+                            <span><span class="badge" style="background-color: red">包邮</span></span>
+                        </p>
+                    </div>
+                    <div class="col-lg-6">
+                        <p style="float: right;margin-right: 10px">
+                            <span>223</span>
+                            <span>人付款</span>
+                        </p>
+                    </div>
+                    <div class="col-lg-12">
+                        <p>
+                            萌乎原创春款女童襦裙改良汉服中式唐装中国风儿童连衣裙公主裙
+                        </p>
+                    </div>
+                    <div class="col-lg-6">
+                        <p>
+                            <span class="glyphicon glyphicon-align-justify"></span>
+                            <span style="color: gray;">徐徐然0</span>
+                        </p>
+                    </div>
+                    <div class="col-lg-6">
+                        <p style="float: right;margin-right: 10px">
+                            <span>河南</span>
+                            <span>郑州</span>
+                        </p>
+                    </div>
+                    <div class="col-lg-6">
+                        <span class="glyphicon glyphicon-fire " style="background-color: red"></span>
+                    </div>
+                    <div class="col-lg-6">
+                        <p style="margin-right: 10px; float: right;">
+                            <span class="glyphicon glyphicon-certificate" style="background-color: red"></span>
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <img src="http://img4.imgtn.bdimg.com/it/u=3863710847,2820277857&fm=200&gp=0.jpg" width="100%" height="200px"/>
+                    </div>
+                    <div class="col-lg-6">
+                        <p style="color: red">
+                            <span>￥</span>
+                            <span>200.99</span>
+                            <span><span class="badge" style="background-color: red">包邮</span></span>
+                        </p>
+                    </div>
+                    <div class="col-lg-6">
+                        <p style="float: right;margin-right: 10px">
+                            <span>223</span>
+                            <span>人付款</span>
+                        </p>
+                    </div>
+                    <div class="col-lg-12">
+                        <p>
+                            萌乎原创春款女童襦裙改良汉服中式唐装中国风儿童连衣裙公主裙
+                        </p>
+                    </div>
+                    <div class="col-lg-6">
+                        <p>
+                            <span class="glyphicon glyphicon-align-justify"></span>
+                            <span style="color: gray;">徐徐然0</span>
+                        </p>
+                    </div>
+                    <div class="col-lg-6">
+                        <p style="float: right;margin-right: 10px">
+                            <span>河南</span>
+                            <span>郑州</span>
+                        </p>
+                    </div>
+                    <div class="col-lg-6">
+                        <span class="glyphicon glyphicon-fire " style="background-color: red"></span>
+                    </div>
+                    <div class="col-lg-6">
+                        <p style="margin-right: 10px; float: right;">
+                            <span class="glyphicon glyphicon-certificate" style="background-color: red"></span>
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <img src="http://img4.imgtn.bdimg.com/it/u=3863710847,2820277857&fm=200&gp=0.jpg" width="100%" height="200px"/>
+                    </div>
+                    <div class="col-lg-6">
+                        <p style="color: red">
+                            <span>￥</span>
+                            <span>200.99</span>
+                            <span><span class="badge" style="background-color: red">包邮</span></span>
+                        </p>
+                    </div>
+                    <div class="col-lg-6">
+                        <p style="float: right;margin-right: 10px">
+                            <span>223</span>
+                            <span>人付款</span>
+                        </p>
+                    </div>
+                    <div class="col-lg-12">
+                        <p>
+                            萌乎原创春款女童襦裙改良汉服中式唐装中国风儿童连衣裙公主裙
+                        </p>
+                    </div>
+                    <div class="col-lg-6">
+                        <p>
+                            <span class="glyphicon glyphicon-align-justify"></span>
+                            <span style="color: gray;">徐徐然0</span>
+                        </p>
+                    </div>
+                    <div class="col-lg-6">
+                        <p style="float: right;margin-right: 10px">
+                            <span>河南</span>
+                            <span>郑州</span>
+                        </p>
+                    </div>
+                    <div class="col-lg-6">
+                        <span class="glyphicon glyphicon-fire " style="background-color: red"></span>
+                    </div>
+                    <div class="col-lg-6">
+                        <p style="margin-right: 10px; float: right;">
+                            <span class="glyphicon glyphicon-certificate" style="background-color: red"></span>
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!--5、分页-->
+    <div class="row">
+        <div class="col-lg-12">
+            <div id="dvpage" style="text-align: center"></div>
+        </div>
+    </div>
+    <!--6、关联商品-->
+    <!--7、底部-->
+</div>
+<script>
+    layui.use('laypage', function(){
+        var laypage = layui.laypage;
+
+        //执行一个laypage实例
+        laypage.render({
+            elem: 'dvpage' //注意，这里的 test1 是 ID，不用加 # 号
+            ,count: 1000 //数据总数，从服务端得到
+        });
+    });
+</script>
+</body>
+</html>
